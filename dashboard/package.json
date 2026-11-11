@@ -1,0 +1,28 @@
+{
+  "name": "amre-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/snapshot.test.mjs",
+    "test:browser": "playwright test"
+  },
+  "dependencies": {
+    "cytoscape": "^3.33.1",
+    "katex": "^0.16.33",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/katex": "^0.16.7",
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.0"
+  }
+}

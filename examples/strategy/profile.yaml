@@ -1,0 +1,12 @@
+schema_version: 1
+name: ExplicitGaps
+context_bytes: 18000
+retrieval_version: bounded-priority-v1
+prompt_template: explicit-gaps-v2
+deep_target_percent: 85
+portfolio:
+  current: 60
+  alternative: 25
+  exploration: 15
+  stagnation_window: 2
+  cooldown_attempts: 2

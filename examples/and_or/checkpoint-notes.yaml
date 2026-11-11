@@ -1,0 +1,10 @@
+schema_version: 1
+active_route: A
+strategy_version: manual-v1
+next_research_action: Review L1 and L2 and check the reduction from them to T.
+unresolved_proof_obligations:
+  - Verify the completed-square identity for every real x.
+  - Review whether L2 and the identity suffice for strict positivity.
+candidate_results:
+  - assertion_id: T
+    summary: The completed-square route suggests a lower bound of one half.

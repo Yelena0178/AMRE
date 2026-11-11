@@ -1,0 +1,72 @@
+schema_version: 1
+name: Known differential geometry and scalar-wave benchmarks
+cases:
+  - case_id: Minkowski
+    kind: B1
+    title: Vanishing curvature in inertial coordinates
+    statement: gr/minkowski-problem.tex
+    reference: gr/minkowski-argument.tex
+    assumptions:
+      - Cartesian inertial coordinates on R^4 and the constant metric with signature (-,+,+,+).
+    tool: gr.curvature
+    input: gr/minkowski.yaml
+    expected:
+      scalar_curvature: "0"
+      christoffel: {}
+      riemann: {}
+    budget: {max_tokens: 4000, timeout_seconds: 45}
+    steps:
+      - step_id: Derivatives
+        strategy: LEMMA_DECOMPOSITION
+        derivation: '\(\partial_a g_{bc}=0\) for the constant metric in the declared chart.'
+      - step_id: Curvature
+        strategy: PROOF_CONSTRUCTION
+        derivation: '\(\Gamma^a_{bc}=0\) gives zero curvature by the coordinate Riemann formula.'
+  - case_id: Sphere
+    kind: B2
+    title: The scalar curvature of the unit two-sphere
+    statement: gr/sphere-problem.tex
+    reference: gr/sphere-argument.tex
+    assumptions:
+      - The unit round metric in the specified polar chart with both poles excluded.
+      - Curvature sign DCD_MINUS_DDC and Levi-Civita connection.
+    tool: gr.curvature
+    input: gr/unit-sphere.yaml
+    expected:
+      scalar_curvature: "2"
+      einstein: {}
+    budget: {max_tokens: 4000, timeout_seconds: 45}
+    steps:
+      - step_id: Connection
+        strategy: LEMMA_DECOMPOSITION
+        derivation: '\(\Gamma^\phi_{\theta\phi}=\cot\theta\) follows from the angular metric coefficient.'
+      - step_id: Ricci
+        strategy: PROOF_CONSTRUCTION
+        derivation: '\(R_{\theta\theta}=1,\ R_{\phi\phi}=\sin^2\theta\) on the open polar chart.'
+      - step_id: Contraction
+        strategy: MATHEMATICAL_SYNTHESIS
+        derivation: '\(g^{ab}R_{ab}=1+(\sin\theta)^{-2}\sin^2\theta=2\).'
+  - case_id: FlatWave
+    kind: B3
+    title: Flat wave energy and boundary flux
+    statement: gr/wave-problem.tex
+    reference: gr/flat-wave-argument.tex
+    assumptions:
+      - A real twice continuously differentiable flat-space scalar wave with constant speed.
+      - Spatial support lies in a common compact set on each compact time interval.
+    tool: gr.wave_energy
+    input: gr/flat-wave-energy.yaml
+    expected:
+      local_identity_residual: "0"
+      integrated_energy_conservation: NOT_AUTOMATED
+    budget: {max_tokens: 4000, timeout_seconds: 45}
+    steps:
+      - step_id: Density
+        strategy: LEMMA_DECOMPOSITION
+        derivation: '\(e=\tfrac12(u_t^2+c^2|\nabla u|^2)\) is the local energy density.'
+      - step_id: Flux
+        strategy: OBSTACLE_DIAGNOSIS
+        derivation: '\(F=-c^2u_t\nabla u\) has zero flux on a sphere outside the common compact support.'
+      - step_id: Integral
+        strategy: MATHEMATICAL_SYNTHESIS
+        derivation: 'Integrate \(\partial_t e + \nabla\cdot F=0\) over a ball containing the support.'

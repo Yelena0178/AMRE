@@ -1,0 +1,13 @@
+conventions:
+  signature: MINUS_PLUS
+  coordinate_chart: Cartesian inertial coordinates
+  chart_domain: "R × R^3"
+  background: Minkowski
+  gauge: Inertial coordinates
+  boundary: COMPACT_SUPPORT
+  function_space: Smooth finite-energy scalar field
+  regularity: Twice continuously differentiable
+  units: Natural units with c=1
+  perturbation_order: 1
+spatial_dimension: 3
+wave_speed: "1"

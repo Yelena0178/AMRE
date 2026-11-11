@@ -1,0 +1,34 @@
+name: CI
+
+"on":
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e ".[dev,gr]"
+      - run: amre --help
+      - run: amre version
+      - run: amre doctor
+      - run: amre --config examples/amre.yaml status
+      - run: amre --config examples/and_or/amre.yaml problem validate P-T
+      - run: amre --config examples/and_or/amre.yaml run --program Algebra --dry-run
+      - run: pytest
+      - run: ruff check

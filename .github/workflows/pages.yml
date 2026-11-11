@@ -1,0 +1,50 @@
+name: Public research snapshot
+
+"on":
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: Publish the explicitly selected snapshot to GitHub Pages
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+      - run: python -m pip install -e .
+      - run: npm ci
+        working-directory: dashboard
+      - run: amre --config examples/and_or/amre.yaml dashboard build --policy examples/and_or/dashboard-public.yaml --output dashboard/dist
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dashboard/dist
+  deploy:
+    if: inputs.deploy
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

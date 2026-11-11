@@ -1,0 +1,18 @@
+schema_version: 1
+papers:
+  - title: "Synthetic example: boundary inequalities"
+    authors: ["A. Fixture", "B. Example"]
+    year: 1999
+    doi: "10.55555/amre-fixture-boundary"
+    arxiv_id: "9901.12345"
+    version: v1
+    provider: offline
+    source_url: "https://example.invalid/amre/boundary/v1"
+    retrieved_at: "2026-11-10T15:00:00Z"
+    fixture: true
+  - title: "Synthetic example: a quadratic extension"
+    arxiv_id: "9901.12346"
+    provider: offline
+    source_url: "https://example.invalid/amre/quadratic"
+    retrieved_at: "2026-11-10T15:00:00Z"
+    fixture: true

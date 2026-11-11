@@ -1,0 +1,3 @@
+workspace_root: ..
+log_level: INFO
+codex_executable: codex

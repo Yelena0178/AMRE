@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+node_modules/
+playwright-report/
+test-results/
+
+# Local settings and regenerable runtime state
+.env
+.env.*
+/amre.yaml
+/.amre/

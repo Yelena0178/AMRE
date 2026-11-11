@@ -1,0 +1,11 @@
+kind: MODEL_EXTENSION
+title: Sum of two squares in the product domain
+field: Algebra
+program: Algebra
+parent_problem: P-T
+assumptions:
+  - H-Real
+significance: Isolate how the one-variable inequality extends to a product domain.
+acceptance_criteria:
+  - id: ExplainReduction
+    description: State the assumptions on both variables and justify the use of the sum.

@@ -1,0 +1,11 @@
+schema_version: 1
+problem_id: P-Quadratic
+acceptance_criteria:
+  - id: Check-Positivity
+    description: Supply a proof of strict positivity on the real numbers.
+budget:
+  max_tokens: 2000
+  timeout_seconds: 60
+provenance:
+  author: AMRE example
+  source: Elementary algebra demonstration

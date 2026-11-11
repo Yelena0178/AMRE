@@ -1,0 +1,164 @@
+schema_version: 1
+contracts:
+- schema_version: 1
+  problem_id: P-T
+  assumptions:
+  - H-Real
+  definitions:
+  - id: D-Quadratic
+    text: The quadratic is 2x^2 + 2x + 1.
+  dependencies:
+  - T
+  acceptance_criteria:
+  - id: C-Review
+    description: Review a reduction and each required lemma.
+  obstacles:
+  - O-Review
+  budget:
+    max_tokens: 2000
+    timeout_seconds: 60
+  claim_status: PROOF_CANDIDATE
+  provenance:
+    author: AMRE example
+    source: Elementary algebra demonstration
+  statement:
+    path: research/statements/T.tex
+    sha256: 82ec1f108b67cc8b9f32047b80f17f6ed1d68ba6b3ed4cf94260f39e339c507a
+graph:
+  schema_version: 1
+  nodes:
+  - id: T
+    kind: THEOREM
+    label: Strict positivity of the quadratic
+    statement:
+      path: research/statements/T.tex
+      sha256: 82ec1f108b67cc8b9f32047b80f17f6ed1d68ba6b3ed4cf94260f39e339c507a
+    claim_status: PROOF_CANDIDATE
+  - id: A
+    kind: PROOF_ROUTE
+    label: Completing the square
+    statement:
+      path: research/statements/A.tex
+      sha256: 39a136ab42ff6de42714f8aed5b17f304655a12dd5199563a8e3ea5c2eb74031
+    claim_status: PROOF_CANDIDATE
+  - id: B
+    kind: PROOF_ROUTE
+    label: Sum of two squares
+    statement:
+      path: research/statements/B.tex
+      sha256: 1746eb362427df9708f0b74fe27eeaf34773d4dae0a8199f74003152fc6f0212
+    claim_status: PROOF_CANDIDATE
+  - id: L1
+    kind: LEMMA
+    label: Completed-square identity
+    statement:
+      path: research/statements/L1.tex
+      sha256: e3c0bd30d02f3f709a028dc766e8784210d08f1eb9847b2a325f27b00fac15fa
+  - id: L2
+    kind: LEMMA
+    label: Real squares are nonnegative
+    statement:
+      path: research/statements/L2.tex
+      sha256: 4e10a3f147d75aa817379b7b89792b853985cedd8557458f3eda479497b80010
+  - id: L3
+    kind: LEMMA
+    label: Two-squares identity
+    statement:
+      path: research/statements/L3.tex
+      sha256: 4ea2339a509d05ecffe5dc181c4ac21c2068e8396e2e9922a64d58742c5cdcdb
+  - id: L4
+    kind: LEMMA
+    label: The two squares cannot both vanish
+    statement:
+      path: research/statements/L4.tex
+      sha256: f2012d67e9640808148944b400a6337d48dd0b0d11a2c6122617c33e15da5e58
+  - id: H-Real
+    kind: ASSUMPTION
+    label: The variables are real
+    assumption_type: MATHEMATICAL
+  - id: O-Review
+    kind: OBSTACLE
+    label: Reduction reviews are pending
+  - id: E-A-Candidate
+    kind: EVIDENCE
+    label: Candidate reduction
+    evidence:
+      evidence_id: E-A-Candidate
+      source_type: MODEL
+      file_path: research/statements/A.tex
+      run:
+        tool: Codex
+        run_id: phase-02-example
+      check_scope: Proposed reduction only
+      check_result: INCONCLUSIVE
+      coverage: FULL_ASSERTION
+      direction: SUPPORT
+      assertion_id: A
+      assertion_revision: 1
+  - id: E-B-Candidate
+    kind: EVIDENCE
+    label: Candidate reduction
+    evidence:
+      evidence_id: E-B-Candidate
+      source_type: MODEL
+      file_path: research/statements/B.tex
+      run:
+        tool: Codex
+        run_id: phase-02-example
+      check_scope: Proposed reduction only
+      check_result: INCONCLUSIVE
+      coverage: FULL_ASSERTION
+      direction: SUPPORT
+      assertion_id: B
+      assertion_revision: 1
+  edges:
+  - source: T
+    target: A
+    relation: ALTERNATIVE_ROUTE
+  - source: T
+    target: B
+    relation: ALTERNATIVE_ROUTE
+  - source: A
+    target: L1
+    relation: REQUIRES_ALL
+  - source: A
+    target: L2
+    relation: REQUIRES_ALL
+  - source: B
+    target: L3
+    relation: REQUIRES_ALL
+  - source: B
+    target: L4
+    relation: REQUIRES_ALL
+  - source: T
+    target: H-Real
+    relation: USES_ASSUMPTION
+  - source: A
+    target: H-Real
+    relation: USES_ASSUMPTION
+  - source: B
+    target: H-Real
+    relation: USES_ASSUMPTION
+  - source: L1
+    target: H-Real
+    relation: USES_ASSUMPTION
+  - source: L2
+    target: H-Real
+    relation: USES_ASSUMPTION
+  - source: L3
+    target: H-Real
+    relation: USES_ASSUMPTION
+  - source: L4
+    target: H-Real
+    relation: USES_ASSUMPTION
+  - source: A
+    target: E-A-Candidate
+    relation: SUPPORTED_BY
+  - source: B
+    target: E-B-Candidate
+    relation: SUPPORTED_BY
+  assumptions:
+    sets:
+    - id: Real-Setting
+      members:
+      - H-Real

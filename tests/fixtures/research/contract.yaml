@@ -1,0 +1,14 @@
+schema_version: 1
+problem_id: P-Test
+definitions:
+  - id: D-Variable
+    text: Let x be real.
+acceptance_criteria:
+  - id: C-Verify
+    description: Check the equality for every real x.
+budget:
+  max_tokens: 1000
+  timeout_seconds: 30
+provenance:
+  author: pytest fixture
+  source: Synthetic test input

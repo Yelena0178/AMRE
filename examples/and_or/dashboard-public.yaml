@@ -1,0 +1,5 @@
+schema_version: 1
+problems: [P-T]
+programs: [Algebra]
+statement_ids: [P-T, T, A, B, L1, L2, L3, L4]
+detail_ids: [P-T, T, A, B, H-Real, H-NearZero, O-Review]

@@ -1,0 +1,1 @@
+"""Autonomous Mathematical Research Engine."""

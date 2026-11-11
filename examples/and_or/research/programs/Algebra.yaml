@@ -1,0 +1,8 @@
+schema_version: 1
+name: Algebra
+problems:
+  - P-T
+limits:
+  attempts: 4
+  seconds: 120
+  tool_calls: 0

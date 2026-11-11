@@ -1,0 +1,26 @@
+schema_version: 1
+template: CriticalCollapse
+status: RESEARCH_TEMPLATE
+model_inputs:
+  - Exact Einstein-matter equations and spacetime dimension
+  - Symmetry, gauge, field ansatz, chart domain and units
+  - Initial and boundary data, function spaces and regularity
+  - Candidate background and any claimed self-similar regime
+problem_slots:
+  - id: Constraints
+    objective: Derive the Einstein constraints in the specified gauge and identify propagation obligations.
+  - id: SelfSimilarity
+    objective: Formulate a critical background and precise regularity conditions at the similarity horizon.
+    after: [Constraints]
+  - id: LinearizedEquations
+    objective: Derive linearized evolution and constraints and separate gauge modes.
+    after: [SelfSimilarity]
+  - id: Spectrum
+    objective: Specify the spectral operator, domain, boundary conditions and accuracy requirements.
+    after: [LinearizedEquations]
+  - id: EnergyEstimate
+    objective: Formulate a weighted energy estimate with exact flux and nonlinear error terms.
+    after: [LinearizedEquations]
+  - id: OpenQuestions
+    objective: Record source-linked questions and missing lemmas with novelty unconfirmed.
+    after: [Spectrum, EnergyEstimate]

@@ -1,0 +1,18 @@
+conventions:
+  signature: RIEMANNIAN
+  coordinate_chart: Spherical polar coordinates
+  chart_domain: "0 < theta < pi, 0 < phi < 2*pi"
+  background: Unit round two-sphere
+  gauge: Fixed coordinates
+  boundary: NOT_APPLICABLE
+  function_space: Smooth metric coefficients
+  regularity: Smooth on the declared chart
+  units: Dimensionless unit radius
+  perturbation_order: 0
+coordinates: [theta, phi]
+metric:
+  - ["1", "0"]
+  - ["0", "sin(theta)**2"]
+sample:
+  theta: "1"
+  phi: "1"

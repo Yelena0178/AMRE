@@ -1,0 +1,17 @@
+conventions:
+  signature: MINUS_PLUS
+  coordinate_chart: Cartesian inertial coordinates
+  chart_domain: "R^4"
+  background: Minkowski
+  gauge: Inertial coordinates
+  boundary: NOT_APPLICABLE
+  function_space: Smooth metric coefficients
+  regularity: Smooth
+  units: Natural units with c=1
+  perturbation_order: 0
+coordinates: [t, x, y, z]
+metric:
+  - ["-1", "0", "0", "0"]
+  - ["0", "1", "0", "0"]
+  - ["0", "0", "1", "0"]
+  - ["0", "0", "0", "1"]
