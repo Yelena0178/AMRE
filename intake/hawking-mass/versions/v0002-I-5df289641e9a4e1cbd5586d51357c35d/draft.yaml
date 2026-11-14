@@ -1,0 +1,324 @@
+schema_version: 1
+version: 2
+parent_version: 1
+request_id: I-5df289641e9a4e1cbd5586d51357c35d
+request_sha256: 0aee1203268328222d2d30cfdcdc41a307e96da327345c6f990d53f7d54b34ac
+producer:
+  mode: external_response
+  model: codex-current-session
+  identity: user_declared_not_authenticated
+  response_sha256: efb2b77c27412129b7180d7599c31ea33ad304e77e1a331cecde91990f86a1a2
+  usage: UNKNOWN; no model was launched by accept
+sources:
+- source_id: S-71f3e610ecd18445667d38f4
+  name: request-I-50bc61ef294345ee9ace7967e613a5b3.txt
+  kind: request
+  sha256: e8df12292d89bb2c516f8cc64494562facbcb0d876cf70d752c694421ee16913
+  size_bytes: 289
+  line_count: 5
+- source_id: S-4ca47bb9d5347d91b3d618b8
+  name: conventions.md
+  kind: material
+  sha256: 0031248bb3b4c358c28591332057c454892ef6c269de22246d227d04d7260db5
+  size_bytes: 1310
+  line_count: 12
+- source_id: S-d89eac8cbd0262a0bf9fadc4
+  name: revision-I-226a126179504fb79c83cc4b1fd46708.txt
+  kind: revision
+  sha256: 4e05dd3bca53754d3397ab6403c5d728e63bbcdc2ad89018617a8c58f689d7b4
+  size_bytes: 12
+  line_count: 1
+- source_id: S-e262ac7a0d009fc269d693ae
+  name: conventions.md
+  kind: material
+  sha256: d6576a042037f98f61d5f1ec4ba48ed980ef60ec83d97fc843cdaf19f4620e1e
+  size_bytes: 1376
+  line_count: 12
+- source_id: S-fe97531a6db089a02aba279b
+  name: revision-I-5df289641e9a4e1cbd5586d51357c35d.txt
+  kind: revision
+  sha256: 4e05dd3bca53754d3397ab6403c5d728e63bbcdc2ad89018617a8c58f689d7b4
+  size_bytes: 12
+  line_count: 1
+content:
+  schema_version: 1
+  status: DRAFT_UNVERIFIED
+  goal:
+    id: Goal
+    text: 在四维球对称 Einstein–无质量标量场系统中，由半径方程与两条零方向约束推导 \(m_u,m_v\) 的精确表达式，并逐步展示抵消项。
+    origin: user
+    citations:
+    - source_id: S-71f3e610ecd18445667d38f4
+      start_line: 1
+      end_line: 5
+      quote: '在四维球对称 Einstein–无质量标量场系统中，设 \\(r>0\\)、\\(\Omega>0\\)，定义 Hawking 质量\
+
+        \\[\
+
+        m=\frac r2\left(1+4\Omega^{-2}r_u r_v\right).\
+
+        \\]\
+
+        从半径方程和两条零方向约束推导 \\(m_u\\) 与 \\(m_v\\) 的精确表达式，逐步展示抵消项。'
+    note: ''
+  assumptions:
+  - id: PositiveRadiusLapse
+    text: \(r>0,\ \Omega>0\)。
+    origin: user
+    citations:
+    - source_id: S-71f3e610ecd18445667d38f4
+      start_line: 1
+      end_line: 1
+      quote: 在四维球对称 Einstein–无质量标量场系统中，设 \\(r>0\\)、\\(\Omega>0\\)，定义 Hawking 质量\
+    note: ''
+  - id: ClassicalDifferentiation
+    text: 按经典解在局部进行所需微分；不假定 r_u 或 r_v 有固定符号，也不假定它们非零。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 8
+      end_line: 8
+      quote: 本次按经典解作局部微分计算；不添加 r_u、r_v 的符号或非零假设。
+    note: 说明本次形式微分计算的适用范围，不增加单调性或非退化条件。
+  definitions:
+  - id: HawkingMass
+    text: \(m=\frac r2(1+4\Omega^{-2}r_u r_v)\)，其中下标表示相应坐标偏导。
+    origin: user
+    citations:
+    - source_id: S-71f3e610ecd18445667d38f4
+      start_line: 3
+      end_line: 3
+      quote: m=\frac r2\left(1+4\Omega^{-2}r_u r_v\right).\
+    note: 仅统一显示转义，不改变原质量定义。
+  - id: MetricConvention
+    text: 采用双零度规 \(g=-\Omega^2du\,dv+r^2d\omega_{\mathbb S^2}^2\)，即 \(g_{uv}=g_{vu}=-\Omega^2/2\)。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 3
+      end_line: 3
+      quote: 标量场记为 phi，采用 g=-Omega^2 du dv+r^2 d omega_{S^2}^2，因此 g_uv=g_vu=-Omega^2/2。
+    note: 用户授权自行选择后确定的本次约定，不是原题已经指定的内容。
+  - id: ScalarNormalization
+    text: 标量场记为 \(\phi\)，采用 \(\operatorname{Ric}_{ab}=2\partial_a\phi\partial_b\phi\)
+      的归一化，无电磁场和宇宙学常数项。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 4
+      end_line: 4
+      quote: 标量场归一化取 Ric_ab=2 (partial_a phi)(partial_b phi)，不含电磁场或宇宙学常数项。
+    note: 本次选定的方程约定；不能与含其他耦合系数的标量场记号混用。
+  dependencies:
+  - id: RadiusEquation
+    text: \(r_{uv}=-\frac{\Omega^2}{4r}-\frac{r_u r_v}{r}\)。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 5
+      end_line: 5
+      quote: 半径方程：r_uv=-Omega^2/(4r)-r_u r_v/r。
+    note: 以参考文献的零电荷特例固定半径方程；作为待用输入，不是本次已完成的推导结果。
+  - id: UConstraint
+    text: \(\partial_u(\Omega^{-2}r_u)=-r\Omega^{-2}(\phi_u)^2\)。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 6
+      end_line: 6
+      quote: u 方向约束：partial_u(Omega^{-2} r_u)=-r Omega^{-2}(phi_u)^2。
+    note: 与选定标量场归一化一致的 u 方向约束。
+  - id: VConstraint
+    text: \(\partial_v(\Omega^{-2}r_v)=-r\Omega^{-2}(\phi_v)^2\)。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 7
+      end_line: 7
+      quote: v 方向约束：partial_v(Omega^{-2} r_v)=-r Omega^{-2}(phi_v)^2。
+    note: 与选定标量场归一化一致的 v 方向约束。
+  existing_results: []
+  gaps:
+  - id: DerivationPending
+    text: 分别展开 m_u、m_v，代入对应零方向约束及半径方程，逐项展示 Ω 导数项、常数几何项和 r_u r_v 的乘积项如何抵消。
+    origin: user
+    citations:
+    - source_id: S-71f3e610ecd18445667d38f4
+      start_line: 5
+      end_line: 5
+      quote: 从半径方程和两条零方向约束推导 \\(m_u\\) 与 \\(m_v\\) 的精确表达式，逐步展示抵消项。
+    note: 正式推导尚未执行；本次 Intake 只准备有出处的任务书。
+  acceptance_criteria:
+  - id: ShowCancellations
+    text: 分别完整展开 m 的 u、v 偏导，标明各次代入，逐项展示几何项与 Ω 导数项的抵消，保留最终标量场通量项。
+    origin: user
+    citations:
+    - source_id: S-71f3e610ecd18445667d38f4
+      start_line: 5
+      end_line: 5
+      quote: 从半径方程和两条零方向约束推导 \\(m_u\\) 与 \\(m_v\\) 的精确表达式，逐步展示抵消项。
+    note: ''
+  questions: []
+changes:
+- id: ClassicalDifferentiation
+  before: null
+  after:
+    section: assumptions
+    id: ClassicalDifferentiation
+    text: 按经典解在局部进行所需微分；不假定 r_u 或 r_v 有固定符号，也不假定它们非零。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 8
+      end_line: 8
+      quote: 本次按经典解作局部微分计算；不添加 r_u、r_v 的符号或非零假设。
+    note: 说明本次形式微分计算的适用范围，不增加单调性或非退化条件。
+- id: Conventions
+  before:
+    section: questions
+    id: Conventions
+    text: 采用哪一种双零度规及标量场归一化？半径方程和两条约束的具体形式是什么？
+    origin: unresolved
+    citations: []
+    note: 原题没有指定，最终系数依赖这些约定。
+  after: null
+- id: DerivationPending
+  before: null
+  after:
+    section: gaps
+    id: DerivationPending
+    text: 分别展开 m_u、m_v，代入对应零方向约束及半径方程，逐项展示 Ω 导数项、常数几何项和 r_u r_v 的乘积项如何抵消。
+    origin: user
+    citations:
+    - source_id: S-71f3e610ecd18445667d38f4
+      start_line: 5
+      end_line: 5
+      quote: 从半径方程和两条零方向约束推导 \\(m_u\\) 与 \\(m_v\\) 的精确表达式，逐步展示抵消项。
+    note: 正式推导尚未执行；本次 Intake 只准备有出处的任务书。
+- id: MetricConvention
+  before: null
+  after:
+    section: definitions
+    id: MetricConvention
+    text: 采用双零度规 \(g=-\Omega^2du\,dv+r^2d\omega_{\mathbb S^2}^2\)，即 \(g_{uv}=g_{vu}=-\Omega^2/2\)。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 3
+      end_line: 3
+      quote: 标量场记为 phi，采用 g=-Omega^2 du dv+r^2 d omega_{S^2}^2，因此 g_uv=g_vu=-Omega^2/2。
+    note: 用户授权自行选择后确定的本次约定，不是原题已经指定的内容。
+- id: MissingEquations
+  before:
+    section: gaps
+    id: MissingEquations
+    text: 原题没有写出半径方程及两条零方向约束，需明确后才能固定最终系数。
+    origin: unresolved
+    citations:
+    - source_id: S-71f3e610ecd18445667d38f4
+      start_line: 5
+      end_line: 5
+      quote: 从半径方程和两条零方向约束推导 \\(m_u\\) 与 \\(m_v\\) 的精确表达式，逐步展示抵消项。
+    note: 不从系统名称静默补入方程。
+  after: null
+- id: RadiusEquation
+  before: null
+  after:
+    section: dependencies
+    id: RadiusEquation
+    text: \(r_{uv}=-\frac{\Omega^2}{4r}-\frac{r_u r_v}{r}\)。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 5
+      end_line: 5
+      quote: 半径方程：r_uv=-Omega^2/(4r)-r_u r_v/r。
+    note: 以参考文献的零电荷特例固定半径方程；作为待用输入，不是本次已完成的推导结果。
+- id: ScalarNormalization
+  before: null
+  after:
+    section: definitions
+    id: ScalarNormalization
+    text: 标量场记为 \(\phi\)，采用 \(\operatorname{Ric}_{ab}=2\partial_a\phi\partial_b\phi\)
+      的归一化，无电磁场和宇宙学常数项。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 4
+      end_line: 4
+      quote: 标量场归一化取 Ric_ab=2 (partial_a phi)(partial_b phi)，不含电磁场或宇宙学常数项。
+    note: 本次选定的方程约定；不能与含其他耦合系数的标量场记号混用。
+- id: UConstraint
+  before: null
+  after:
+    section: dependencies
+    id: UConstraint
+    text: \(\partial_u(\Omega^{-2}r_u)=-r\Omega^{-2}(\phi_u)^2\)。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 6
+      end_line: 6
+      quote: u 方向约束：partial_u(Omega^{-2} r_u)=-r Omega^{-2}(phi_u)^2。
+    note: 与选定标量场归一化一致的 u 方向约束。
+- id: VConstraint
+  before: null
+  after:
+    section: dependencies
+    id: VConstraint
+    text: \(\partial_v(\Omega^{-2}r_v)=-r\Omega^{-2}(\phi_v)^2\)。
+    origin: model_suggestion
+    citations:
+    - source_id: S-fe97531a6db089a02aba279b
+      start_line: 1
+      end_line: 1
+      quote: 你自己定
+    - source_id: S-e262ac7a0d009fc269d693ae
+      start_line: 7
+      end_line: 7
+      quote: v 方向约束：partial_v(Omega^{-2} r_v)=-r Omega^{-2}(phi_v)^2。
+    note: 与选定标量场归一化一致的 v 方向约束。

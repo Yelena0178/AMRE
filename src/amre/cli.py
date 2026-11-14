@@ -14,6 +14,7 @@ from amre.domains.gr.commands import add_gr_commands, run_gr_command
 from amre.errors import AmreError
 from amre.execution.commands import add_execution_commands, run_execution_command
 from amre.execution.queue import TaskQueue
+from amre.intake.commands import add_intake_commands, run_intake_command
 from amre.literature.commands import add_literature_commands, run_literature_command
 from amre.log import configure_logging
 from amre.reports import add_report_commands, run_report_command
@@ -73,6 +74,7 @@ def main(argv: list[str] | None = None) -> int:
     add_report_commands(commands)
     add_benchmark_commands(commands)
     add_demo_command(commands)
+    add_intake_commands(commands)
 
     args = parser.parse_args(argv)
     if args.command is None:
@@ -86,6 +88,10 @@ def main(argv: list[str] | None = None) -> int:
         config = load_config(args.config)
         configure_logging(config.settings.log_level)
         logger.debug("Loaded settings from %s", config.source or "defaults and environment")
+        if args.command == "intake":
+            return run_intake_command(
+                args, config.settings.workspace_root, config.settings.codex_executable
+            )
         if args.command == "problem":
             return run_problem_command(args, config.settings.workspace_root)
         if args.command in {"checkpoint", "memory", "context"}:

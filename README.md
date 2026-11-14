@@ -75,6 +75,13 @@ Remove-Item Env:AMRE_LOG_LEVEL
 通过 `ResearchStore` 修改已有数据会记录需要重新检查的版本。查询、修改和证据登记示例见
 [双路线示例](examples/and_or/README.md)。
 
+## 材料导入与任务书草案
+
+`amre intake` 接收自然语言目标与文本、Markdown、LaTeX 材料，输出有出处、可修订的
+任务书草案。`prepare` 不启动模型；可导入当前核心模型的答复，或显式选择
+`generate --adapter codex --live`。草案不自动进入研究图，也不启动研究执行。
+命令、预算、版本与恢复说明见 [Intake v1](docs/INTAKE.md)。
+
 ## 研究记忆
 
 在有研究合同的工作区中，通过 YAML 写明下一步目标，随后保存、恢复并构建 Active Context。

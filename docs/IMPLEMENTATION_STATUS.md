@@ -15,6 +15,63 @@ Deep Research 新增验收以 [阶段计划](PHASE_PLAN.md)为准。阶段 04–
 | 08 | GR 专业计算与物理一致性 | DONE | 曲率、波动能量、数值检验、证明义务、同会话工件与证据 | 外部高级后端与严格区间计算未配置 | 将计算档案纳入 Dashboard |
 | 09 | 研究 Dashboard 与 GitHub Pages | DONE | 公开快照、交互图谱、深度会话、脱敏、静态构建与浏览器验收 | GitHub Pages 实际部署未运行 | 保持本地回归 |
 | 10 | 策略基准与 v1.0 验收 | DONE | 三题四组对照、策略评估与回退、跨进程恢复、报告、静态导出和本地发行 | 真实模型与远程发布 UNVERIFIED | 见发行验收 |
+| Intake v1 | 材料导入与研究任务书草案 | DONE | 原件归档、出处校验、两版草案、预算与恢复、CLI 和全量回归 | 真实 Codex 服务单独 UNVERIFIED | 保持回归；真实服务须单独授权 |
+
+## 2026-11-11 · Intake v1 实施记录
+
+授权范围见 [阶段计划](PHASE_PLAN.md) 的 Intake v1。新增 `src/amre/intake/`，复用现有
+ModelAdapter，只在任务中新增默认 research 的 purpose 字段，并为 intake 选择草拟指令。
+原研究提示、沙箱和执行行为保留，相关参数回归同时覆盖两种用途。
+
+交付与恢复入口：
+
+- `amre intake import/prepare/accept/generate/show`，详见 [使用说明](INTAKE.md)。
+- 原件、来源版本和逐行引文；独立草案结构与四类来源归属；不升级任何证明证据。
+- 不可变版本、前后字段变化、过期拒绝及原子发布恢复。
+- `draft.yaml`、`statement.tex`、`review.md` 和可恢复请求/答复/派发回执。
+- ADR-002 用途修订、ADR-024 流程边界及同步的 AGENTS.md。
+
+运行环境：Windows PowerShell、项目 `.venv`、Python 3.13.5；未安装新依赖。
+
+### 真实数学问题的准备流程验收
+
+使用 `examples/intake/old-proof.md` 中平方根 2 无理性的既有反证法笔记。
+原件导入后，当前核心模型阅读导出的请求，生成首版，再依据一条演示用自然语言修订生成第二版。
+两次 `intake accept` 和 `intake show --version 2` 实际执行成功；输入及原始答复均保留。
+这不是用户私人研究的导入，也不声称用户确认了演示内容。
+
+产物见 [验收说明与两版草案](../examples/intake/README.md)。逐项核对结果：
+
+| 要求 | 当前证据 |
+| --- | --- |
+| 原件和来源版本 | 原始笔记按字节归档；来源 ID、SHA-256、行号与引用原文一致 |
+| 目标与假设不被悄悄改变 | 两版的 Goal、ContradictionAssumption 和 OldArgument 完全一致 |
+| 建议与未决项明确区分 | 首版验收条件为 model_suggestion，验收方式问题为 unresolved |
+| 自然语言修订有效 | 第二版细化 ParityGap，按指令调整 CompleteProof，移除已解决的 ReviewMethod |
+| 不把缺口升级为假设或已证结论 | 奇偶性引理仅在 gaps；两个版本均为 DRAFT_UNVERIFIED |
+| 三文件与历史 | 两版均有三文件，清单包含工件哈希及父版本，自动测试重新核对 |
+| 研究边界 | 正式 research 目录、研究图与证据未被 Intake 写入；测试明确断言隔离 |
+
+模型路径为当前会话的外部答复导入，身份按声明记录。没有启动嵌套 Codex 或新增付费模型调用。
+`generate --adapter codex --live` 的真实服务运行保持 UNVERIFIED；其提示、参数、共享锁、
+超时/失败回执与预算拒绝使用离线替身和已有子进程传输测试验证，不冒充服务端联调证据。
+
+### 验证记录
+
+- 初次全量回归：`python -m pytest -q --tb=short`，146 passed in 353.77s。
+- 后续补充文本编码、原件换行保护、适配器用途分支及示例验证；相关命令
+  `pytest tests/test_intake.py tests/test_execution.py::test_codex_arguments_and_jsonl_with_fake_transport tests/test_cli.py -q --tb=short`，34 项通过。
+- `ruff check`、受影响文件 `ruff format --check`、`pip check` 均通过。
+- 最终全量回归：`python -m pytest -q --tb=short`，153 passed in 338.22s。
+- 已安装入口：`.venv/Scripts/amre.exe intake show --draft examples/intake/acceptance --version 2`，
+  成功读取第二版；两版工件哈希及逐行引用再次通过核对。
+- `git check-attr text` 确认原件与已发布草案均禁用换行转换；`git diff --check` 通过。
+
+Intake v1 按其授权边界验收完成，标为 DONE。真实服务联调未作为本次验收的替代或隐含结论。
+
+后续实际服务运行需要单独授权并在独立终端执行；供应商 token 上限只能事后检查，
+外部答复的身份与使用量无法由本地程序认证。草案的出处校验不能替代数学含义审阅。
+当前改动未提交、未推送，也没有启动正式研究或网站发布。
 
 ## 阶段 01 开发记录
 

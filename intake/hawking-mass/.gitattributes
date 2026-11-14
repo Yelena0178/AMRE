@@ -1,0 +1,5 @@
+sources/** -text
+requests/** -text
+responses/** -text
+versions/** -text
+manifest.yaml -text

@@ -1,0 +1,33 @@
+schema_version: 1
+sources:
+- source_id: S-67fe899ad63041cd3c97b6a1
+  name: old-proof.md
+  kind: material
+  sha256: bf236f4d1d83ddf48f7ac2b61c9a0eb3852abd8aa662d652ee6ace1d1fb86a7b
+  size_bytes: 452
+  line_count: 9
+- source_id: S-e38879957101320aabb15aae
+  name: request-I-e88fc53abe5d41c7aad590a16de76cef.txt
+  kind: request
+  sha256: 4bf8b9a015b138fda302eba39fc140e259085030f832e2e4c1ed326199b44b18
+  size_bytes: 238
+  line_count: 1
+- source_id: S-64628f11b18ef351c9aeaa8a
+  name: revision-I-0562e7e8817e4f139073685518d7a78d.txt
+  kind: revision
+  sha256: fa19ff05ff69cde4e6316e61a7db2a54a11ec21670b479d1ab4ab4484f9a281f
+  size_bytes: 356
+  line_count: 1
+versions:
+- number: 1
+  request_id: I-e88fc53abe5d41c7aad590a16de76cef
+  files:
+    draft.yaml: c711bb54ef2e68b8a58349638302220b305b33c4fb7fb34858115c32488e67eb
+    statement.tex: f7cb644c4f71ac874904681a0b1305dd512f3dadffc0dfa694ee88831e67466e
+    review.md: ba7f9c938664dc42c4be555e96c0c52988ea724f4fcfd9c44600396290a7fef8
+- number: 2
+  request_id: I-0562e7e8817e4f139073685518d7a78d
+  files:
+    draft.yaml: 888cf615440fb4ddd94e43a64a441d07183c0c9cd92d8e73384a4da6d2aa2ddb
+    statement.tex: f7cb644c4f71ac874904681a0b1305dd512f3dadffc0dfa694ee88831e67466e
+    review.md: 693620101e88311d33b34f9772c416c5ec72791355068565ecfb873beaf5f562

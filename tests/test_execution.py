@@ -199,7 +199,10 @@ def test_codex_live_gate_recursion_and_missing_cli(monkeypatch: pytest.MonkeyPat
     assert result.failure == Failure.UNAVAILABLE
 
 
-def test_codex_arguments_and_jsonl_with_fake_transport(monkeypatch: pytest.MonkeyPatch) -> None:
+@pytest.mark.parametrize("purpose", ["research", "intake"])
+def test_codex_arguments_and_jsonl_with_fake_transport(
+    monkeypatch: pytest.MonkeyPatch, purpose: str
+) -> None:
     for name in ("AMRE_MODEL_CHILD", "CODEX_THREAD_ID", "CODEX_SESSION_ID", "CODEX_TOOL_CALL_ID"):
         monkeypatch.delenv(name, raising=False)
     calls = []
@@ -225,6 +228,7 @@ def test_codex_arguments_and_jsonl_with_fake_transport(monkeypatch: pytest.Monke
     monkeypatch.setattr(adapters, "run_process", fake)
     result = CodexCLIAdapter(sys.executable, live=True).run(
         ReasoningTask(
+            purpose=purpose,
             attempt_id="AT-Test",
             problem_id="P-T",
             checkpoint_id="CP-Test",
@@ -244,6 +248,11 @@ def test_codex_arguments_and_jsonl_with_fake_transport(monkeypatch: pytest.Monke
     assert "multi_agent" in argv and "shell_tool" in argv
     assert argv[-1] == "-" and b'"objective":"Review"' in options["data"]
     assert options["env"]["AMRE_MODEL_CHILD"] == "1"
+    if purpose == "intake":
+        assert options["data"].startswith(b"Prepare or revise an intake draft.")
+        assert b"Do not perform research or solve proofs." in options["data"]
+    else:
+        assert options["data"].startswith(b"Perform one mathematical research attempt")
 
 
 @pytest.mark.parametrize("command", ["pause", "stop"])

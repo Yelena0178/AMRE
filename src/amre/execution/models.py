@@ -59,6 +59,7 @@ class Failure(StrEnum):
 
 
 class ReasoningTask(VersionedRecord):
+    purpose: Literal["research", "intake"] = "research"
     attempt_id: Identifier
     problem_id: Identifier
     route_id: Identifier | None = None

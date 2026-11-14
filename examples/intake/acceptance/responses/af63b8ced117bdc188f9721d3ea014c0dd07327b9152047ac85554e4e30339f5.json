@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "status": "DRAFT_UNVERIFIED",
+  "goal": {
+    "id": "Goal",
+    "text": "证明 \\(\\sqrt{2}\\notin\\mathbb{Q}\\)。",
+    "origin": "user",
+    "citations": [{
+      "source_id": "S-e38879957101320aabb15aae",
+      "start_line": 1,
+      "end_line": 1,
+      "quote": "请根据旧证明笔记整理平方根 2 无理性的研究任务书。沿用互素正整数 p、q 的反证法，把笔记略过的奇偶性步骤列为待完成事项；不新增其他数学假设，不把旧证明认定为已验证。"
+    }],
+    "note": "保留原目标的无条件结论；下面的有理表示仅是反证法中的临时假设。"
+  },
+  "assumptions": [{
+    "id": "ContradictionAssumption",
+    "text": "反证法临时假设：存在互素正整数 \\(p,q\\)，满足 \\(\\sqrt{2}=p/q\\)。",
+    "origin": "material",
+    "citations": [{
+      "source_id": "S-67fe899ad63041cd3c97b6a1",
+      "start_line": 3,
+      "end_line": 3,
+      "quote": "假设存在互素的正整数 p、q，使 sqrt(2)=p/q。"
+    }],
+    "note": "这是原笔记的反证法设定，不是向研究目标追加的限制条件。"
+  }],
+  "definitions": [],
+  "dependencies": [],
+  "existing_results": [{
+    "id": "OldArgument",
+    "text": "旧笔记从 \\(p^2=2q^2\\) 推出 p 为偶数，再写 p=2k 推出 q 为偶数，以此与互素条件矛盾。这里只记录既有论证的内容。",
+    "origin": "material",
+    "citations": [{
+      "source_id": "S-67fe899ad63041cd3c97b6a1",
+      "start_line": 4,
+      "end_line": 6,
+      "quote": "平方后得到 p²=2q²，因此 p 是偶数。\n写 p=2k，代入得到 q²=2k²，因此 q 也是偶数。\n这与 p、q 互素矛盾，因此 sqrt(2) 不是有理数。"
+    }],
+    "note": "既有论证未附独立检验记录，不作为已验证定理或可直接依赖的证据。"
+  }],
+  "gaps": [{
+    "id": "ParityGap",
+    "text": "展开并核对：若整数的平方是偶数，则该整数也是偶数；旧论证对 p 和 q 都使用了这一步。",
+    "origin": "material",
+    "citations": [{
+      "source_id": "S-67fe899ad63041cd3c97b6a1",
+      "start_line": 8,
+      "end_line": 8,
+      "quote": "笔记尚未展开的步骤：整数的平方为偶数，为什么这个整数也是偶数？"
+    }],
+    "note": "登记为待完成步骤，没有在 Intake 中补写或验证证明。"
+  }],
+  "acceptance_criteria": [{
+    "id": "CompleteProof",
+    "text": "后续交付一份从互素有理表示到矛盾的完整证明，明确补足奇偶性步骤，并注明实际取得的核对记录。",
+    "origin": "model_suggestion",
+    "citations": [],
+    "note": "这是模型拟议的验收条件，等待用户审阅；不表示证明已完成。"
+  }],
+  "questions": [{
+    "id": "ReviewMethod",
+    "text": "后续研究的证明应由人工核对，还是要求指定形式化工具验证？",
+    "origin": "unresolved",
+    "citations": [],
+    "note": "用户未指定后续证明的验收方式；整理草案不代替这一决定。"
+  }]
+}
